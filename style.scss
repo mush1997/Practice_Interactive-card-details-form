@@ -1,0 +1,425 @@
+$linear_gradient: hsl(249, 99%, 64%), hsl(278, 94%, 30%);
+$red: hsl(0, 100%, 66%);
+$white: hsl(0, 0%, 100%);
+$light_grayish_violet: hsl(270, 3%, 87%);
+$dark_grayish_violet: hsl(279, 6%, 55%);
+$very_dark_violet: hsl(278, 68%, 11%);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Grotesk";
+    font-size: 18px;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("images/bg-main-desktop.png");
+    background-repeat: no-repeat;
+    background-size: 33% 100%;
+
+    main {
+        width: 90%;
+        min-width: 920px;
+        max-width: 1400px;
+        min-height: 530px;
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 40px 0 20px 0;
+
+        button {
+            padding: 10px 8px;
+            width: 100%;
+            background-color: $very_dark_violet;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            color: $white;
+            margin-top: 40px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: hsl(278, 94%, 30%);
+            }
+        }
+
+        .card {
+            flex-basis: 45%;
+            min-width: 450px;
+            max-width: 500px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+
+            div.back,
+            div.front {
+                flex-basis: 100%;
+                width: 400px;
+                min-height: 200px;
+                position: relative;
+
+                p {
+                    color: $white;
+                }
+            }
+
+            .back {
+                order: 1;
+                margin-top: 30px;
+                background-image: url("images/bg-card-back.png");
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-size: 80% auto;
+
+                #cvcNum {
+                    position: absolute;
+                    right: 10%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 0.8rem;
+                }
+            }
+
+            .front {
+                background-image: url("images/bg-card-front.png");
+                background-repeat: no-repeat;
+                background-position: left top;
+                background-size: 80% auto;
+
+                img {
+                    width: 20%;
+                    position: absolute;
+                    left: 20px;
+                    top: 20px;
+                }
+
+                #cardNum {
+                    padding: 0 20px;
+                    width: 80%;
+                    position: absolute;
+                    top: 50%;
+                    font-size: 1.1rem;
+                    letter-spacing: 2px;
+                    word-spacing: 4px;
+                }
+
+                div {
+                    padding: 0 20px;
+                    width: 80%;
+                    position: absolute;
+                    top: 75%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    p {
+                        font-size: 0.75rem;
+                    }
+
+                    #cardHolder {
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+        }
+
+        .formArea {
+            flex-basis: 50%;
+            min-width: 450px;
+            max-width: 630px;
+            padding: 20px;
+
+            .row {
+                width: 100%;
+                margin: 30px 0;
+
+                p {
+                    font-size: 0.8rem;
+                    color: $very_dark_violet;
+                    font-weight: 500;
+                    letter-spacing: 2px;
+                    text-transform: uppercase;
+                    margin-bottom: 6px;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 8px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: $very_dark_violet;
+                    letter-spacing: 1px;
+
+                    border-radius: 6px;
+                    border: 2px solid $light_grayish_violet;
+                    outline: none;
+
+                    &::placeholder {
+                        font-weight: normal;
+                        color: $dark_grayish_violet;
+                    }
+
+                    &:focus {
+                        border-color: transparent;
+                        background-image: linear-gradient($white, $white), linear-gradient(to right, $linear_gradient);
+                        background-origin: border-box;
+                        background-clip: padding-box, border-box;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                input.error {
+                    border-color: $red;
+                }
+
+                .warning,
+                .wrong {
+                    display: none;
+                    font-size: 0.75rem;
+                    color: $red;
+                    letter-spacing: 0;
+                    text-transform: none;
+                    margin-top: 4px;
+                }
+            }
+
+            .row:nth-child(3) {
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    flex-basis: 49%;
+                }
+
+                div:nth-child(1) {
+                    input {
+                        width: 45%;
+                    }
+                }
+            }
+
+            button {
+                margin-top: 0;
+            }
+        }
+
+        .thankMsg {
+            display: none;
+            flex-basis: 50%;
+            min-width: 450px;
+            max-width: 630px;
+            padding: 20px;
+            text-align: center;
+
+            h1 {
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: $very_dark_violet;
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                margin-top: 30px;
+            }
+
+            p {
+                font-size: 1rem;
+                color: $dark_grayish_violet;
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:960px) {
+    body {
+        main {
+            width: 95%;
+            min-width: 660px;
+            max-width: 860px;
+
+            .card {
+                flex-basis: 50%;
+                min-width: 320px;
+                max-width: 380px;
+                padding: 10px;
+
+                div.back,
+                div.front {
+                    width: 100%;
+                }
+
+                .back {
+                    margin-top: 0;
+                    background-size: 92% auto;
+                }
+
+                .front {
+                    background-size: 92% auto;
+
+                    img {
+                        left: 16px;
+                        top: 16px;
+                    }
+
+                    #cardNum {
+                        padding: 0 16px;
+                        width: 92%;
+                        top: 45%;
+                        letter-spacing: 1px;
+                        word-spacing: 2px;
+                    }
+
+                    div {
+                        padding: 0 16px;
+                        width: 92%;
+                        top: 64%;
+                    }
+                }
+            }
+
+            .formArea {
+                flex-basis: 45%;
+                min-width: 320px;
+                max-width: 400px;
+
+                .row:nth-child(3) {
+                    align-items: flex-end;
+
+                    div {
+                        flex-basis: 45%;
+                    }
+
+                    div:nth-child(1) {
+                        input {
+                            width: 47%;
+                        }
+                    }
+                }
+            }
+
+            .thankMsg {
+                flex-basis: 45%;
+                min-width: 320px;
+                max-width: 400px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:700px) {
+    body {
+        background-image: url("images/bg-main-mobile.png");
+        background-size: 100% 28%;
+
+        main {
+            min-width: 300px;
+            max-width: 600px;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .card {
+                flex-basis: auto;
+                width: 100%;
+                min-width: 400px;
+                max-width: 480px;
+                min-height: 420px;
+                justify-content: center;
+                position: relative;
+                margin-bottom: 40px;
+
+                div.back,
+                div.front {
+                    width: 95%;
+                    min-height: 250px;
+                    position: absolute;
+                }
+
+                .back {
+                    order: 0;
+                    background-size: 90% auto;
+                }
+
+                .front {
+                    background-size: 90% auto;
+                    top: 40%;
+                    z-index: 10;
+
+                    #cardNum {
+                        width: 90%;
+                    }
+
+                    div {
+                        width: 90%;
+                        top: 60%;
+                    }
+                }
+            }
+
+            .formArea {
+                flex-basis: auto;
+                width: 100%;
+                min-width: 380px;
+                max-width: 480px;
+            }
+
+            .thankMsg {
+                flex-basis: auto;
+                width: 100%;
+                min-width: 380px;
+                max-width: 480px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:500px) {
+    body {
+        main {
+            min-width: 300px;
+            max-width: 480px;
+
+            .card {
+                min-width: 300px;
+                min-height: 400px;
+                margin-bottom: -20px;
+
+                div.back,
+                div.front {
+                    width: 90%;
+                    min-height: 250px;
+                }
+
+                .front {
+                    #cardNum {
+                        top: 35%;
+                        font-size: 0.9rem;
+                        word-spacing: 0px;
+                    }
+
+                    div {
+                        top: 44%;
+                    }
+                }
+            }
+
+            .formArea {
+                min-width: 280px;
+                min-height: 400px;
+            }
+
+            .thankMsg {
+                min-width: 280px;
+                min-height: 400px;
+            }
+        }
+    }
+}
